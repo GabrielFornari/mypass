@@ -26,7 +26,8 @@ def main():
                     userFile.writeFile(data)
                 return 0
             elif opt == 2:
-                userFile.readFile()
+                data = userFile.readFile()
+                interface.showRegisters(data)
                 return 0
             elif opt == 3:
                 pass # rm
@@ -71,8 +72,8 @@ class EncryptedFile:
                 data = []
                 for line in f:
                     data.append(json.loads(line))
-                print(data)
                 f.close()
+                return data
         except FileNotFoundError:
             msg.fileNotFound()
 

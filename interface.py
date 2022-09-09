@@ -1,31 +1,39 @@
 
+
+def showRegisters(data):
+    if not data:
+        print("There is no register in the database.")
+        return
+
+    print("Total number os entries recovered: " + str(len(data)))
+    print("--------------------")
+    for register in data:
+        print("Title: " + register["title"])
+        for i in range(len(register["labels"])):
+            print("   " + register["labels"][i] + ": " + register["values"][i])
+        print("--------------------")
+
+
+
 def newRegister():
     print("Fields 'Title' and 'Password' cannot be empty.")
     title = input("Title: ")
     if title == "":
         return
 
-    login = input("Login: ")
-
-    iPass = 0
-    passwordLabels = []
-    passwords = []
-    passwordLabel = input("Password label "+str(iPass)+": ")
-    if passwordLabel == "":
-        passwordLabel = "Password "+str(iPass)
-    password = input(passwordLabel+": ")
-    while(password != ""):
-        passwords.append(password)
-        passwordLabels.append(passwordLabel)
-        iPass += 1
-        passwordLabel = input("Password label "+str(iPass)+": ")
-        if passwordLabel == "":
-            passwordLabel = "Password "+str(iPass)
-        password = input(passwordLabel+": ")
-    if len(passwords) == 0:
+    labels = []
+    values = []
+    label = input("Label name: ")
+    while(label != ""):
+        value = input(label+": ")
+        labels.append(label)
+        values.append(value)
+        label = input("Label name: ")
+        
+    if len(values) == 0:
         return
     else:
-        return {"title": title, "login": login, "passwordLabels": passwordLabels, "passwords": passwords}
+        return {"title": title, "labels": labels, "values": values}
 
 def checkNewUser():
     userInput = input("Are you a new user? [Y/N] ")

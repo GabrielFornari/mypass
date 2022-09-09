@@ -1,1 +1,6 @@
+# Ignore the database file
 file.json
+
+# Ignore the pycache dir
+/__pycache__
+
