@@ -1,4 +1,8 @@
+from getpass import getpass
 
+def getPassword():
+    # Add restrictions for psw size
+    return getpass().encode('UTF-8')
 
 def showRegisters(data):
     if not data:
@@ -23,7 +27,6 @@ def chooseRegister(data):
     for register in data:
         print("[" + str(i) + "] " + register["title"])
         i += 1
-
     chosenIdx = int(input("Type entry number to choose: "))
     if chosenIdx > 0 and chosenIdx < len(data):
         return data[chosenIdx-1]
@@ -57,7 +60,6 @@ def newRegister():
         labels.append(label)
         values.append(value)
         label = input("Label name: ")
-        
     if len(values) == 0:
         return
     else:
@@ -79,7 +81,6 @@ def updateRegister(register):
         value = input("New value: ")
         if value != "":
             register["values"][i] = value
-
 
 def checkNewUser():
     userInput = input("Are you a new user? [Y/N] ")
@@ -119,5 +120,10 @@ def checkOptions(args):
             return {"opt": "error"}
     elif args[1] == "help":
         return {"opt": "help"}
+    elif args[1] == "import":
+        if len(args) == 3:
+            return {"opt": "import", "filename": args[2]}
+        else:
+            return {"opt": "error"}
     else:
         return {"opt": "error"}

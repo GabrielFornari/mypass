@@ -6,8 +6,11 @@ def fileNotFound():
 def invalidInput():
     print("Invalid input parameters. Check 'help' for more information.")
 
-def successfulRemoved():
+def successfullyRemoved():
     print("Successful removed entry.")
 
-def successfulUpdated():
+def successfullyUpdated():
     print("Successful updated entry.")
+
+def successfullyImported():
+    print("Successful imported file.")
