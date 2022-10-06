@@ -9,8 +9,8 @@ Usage: <br>
 <br><br>
 - OPTION can be: <br>
   - new: creates a new password entry <br>
-  - list or ls: lists all saved password entries <br>
-  - list [KEY] or ls [KEY]: lists all password entries that matches KEY <br>
+  - ls or list: lists all saved password entries <br>
+  - ls [KEY] or list [KEY]: lists all password entries that matches KEY <br>
   - up [KEY] or update [KEY]: edit password entry that matches KEY <br>
   - rm [KEY] or remove [KEY]: remove selected password entry that matches KEY <br>
   - help: show help <br>
