@@ -5,7 +5,7 @@ MyPass is an attempt to develop a password manager aplication with command line 
 So far, the aplication can store and recover passwords using encrypted JSON file. It only allows one user. The password must be defined during the first execution of the aplication and cannot be changed.
 
 Usage: <br>
-- mypass [OPTION] [KEY]
+> mypass [OPTION] [KEY]
 <br><br>
 - Option: <br>
   - new: creates a new password entry <br>
