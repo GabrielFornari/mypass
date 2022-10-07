@@ -10,11 +10,23 @@ import base64
 class EncryptedFile:
     def __init__(self) -> None:
         self._fileName = ".dat"
+        self._configFile = ".json"
     
     def setPassword(self, psw):
-        # generate Fernet key
-        key = bcrypt.kdf(password=psw, salt=b'salt', desired_key_bytes=32, rounds=100)
+        try:
+            with open(self._configFile, 'r') as file:
+                configData = json.load(file)
+                file.close()
+        except FileNotFoundError:
+            return -1
+
+        salt = configData["salt"].encode('utf-8')
+        keySize = configData["keySize"]
+        rounds = configData["rounds"]
+
+        key = bcrypt.kdf(password=psw, salt=salt, desired_key_bytes=keySize, rounds=rounds)
         self.__password = base64.b64encode(key)
+        return 1
 
     def fileExists(self):
         if os.path.isfile(self._fileName):
@@ -69,7 +81,9 @@ class EncryptedFile:
             return -1
         f = Fernet(self.__password)
         jsonObj = f.decrypt(encryptedData).decode('utf-8')
-        return json.loads(jsonObj)
+        registers = json.loads(jsonObj)
+        registers = sorted(registers, key=lambda item: item["title"])
+        return registers
 
     def readFileFilter(self, key = ""):
         registers = self.readFile()

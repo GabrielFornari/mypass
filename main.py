@@ -12,7 +12,10 @@ def main():
 
     if not userFile.fileExists():
         if interface.checkNewUser():
-            userFile.setPassword(interface.getPassword())
+            newPassword = interface.createPassword()
+            if newPassword == -1:
+                return 0
+            userFile.setPassword(newPassword)
             userFile.createFile()
         else:
             msg.fileNotFound()
@@ -23,7 +26,8 @@ def main():
             msg.invalidInput()
             return -1
         else:
-            # Check password
+            # Warning: no password check!
+            
             userFile.setPassword(interface.getPassword())
             if userChoice["opt"] == "new":
                 register = interface.newRegister()
@@ -47,7 +51,6 @@ def main():
                 data = userFile.readFileFilter(userChoice["key"])
                 register = interface.chooseRegister(data)
                 interface.updateRegister(register)
-                
                 if userFile.updateRegister(register) > 0:
                     msg.successfullyUpdated()
                     return 0

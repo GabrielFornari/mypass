@@ -7,10 +7,10 @@ def invalidInput():
     print("Invalid input parameters. Check 'help' for more information.")
 
 def successfullyRemoved():
-    print("Successful removed entry.")
+    print("Successfully removed entry.")
 
 def successfullyUpdated():
-    print("Successful updated entry.")
+    print("Successfully updated entry.")
 
 def successfullyImported():
-    print("Successful imported file.")
+    print("Successfully imported file.")

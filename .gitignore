@@ -1,9 +1,13 @@
 # Ignore the database file
 .dat
 
+# Ignore the config file
+.json
+
 # Ignore the pycache dir
 /__pycache__
 
 # Ignore test files
 test.json
 jsontest.py
+test.zip
